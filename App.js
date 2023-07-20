@@ -2,6 +2,7 @@
 // import react Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet } from 'react-native';
 
 // Create the navigator
 const Stack = createNativeStackNavigator();
@@ -31,10 +32,9 @@ const App = () => {
 
   return (
     // <View style={styles.container}>
-      <NavigationContainer>
+      <NavigationContainer style={styles.container}>
         {/* adding stack screen */}
-        <Stack.Navigator>
-          initialRouteName='ShoppingLists'
+        <Stack.Navigator initialRouteName= 'ShoppingLists' >
           <Stack.Screen 
             name='ShoppingLists'
             // component={ShoppingLists}
@@ -48,11 +48,13 @@ const App = () => {
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#bfd8ad',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#bfd8ad',          // no effect .. why ?
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+export default App;

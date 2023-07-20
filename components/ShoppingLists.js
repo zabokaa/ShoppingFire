@@ -57,7 +57,7 @@ const ShoppingLists = ({ db }) => {
   const [lists, setLists] = useState([]);
 
   const fetchShoppingLists = async () => {
-    const listsDocuments = await getDocs(collection(db, "shoppingLists"));
+    const listsDocuments = await getDocs(collection(db, "shoppinglists"));    // had issue with naming !! solved
     let newLists = [];
     listsDocuments.forEach(docObject => {
       newLists.push({ id: docObject.id, ...docObject.data() })
