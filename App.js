@@ -1,13 +1,16 @@
 
-import { StyleSheet, View } from 'react-native';
-// create navigator, IM before navigation
+// import react Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// Create the navigator
 const Stack = createNativeStackNavigator();
-//connect to firebase:
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import ShoppingList from './components/ShoppingList';
+
+// import the screens
+import ShoppingLists from './components/ShoppingLists';
 
 const App = () => {
  // copy paste from firebase (for web add SDK)
@@ -27,29 +30,29 @@ const App = () => {
  
 
   return (
-    <View style={styles.container}>
+    // <View style={styles.container}>
       <NavigationContainer>
         {/* adding stack screen */}
         <Stack.Navigator>
-          initialRouteName='ShoppingList'
+          initialRouteName='ShoppingLists'
           <Stack.Screen 
-            name='ShoppingList'
-            component={ShoppingList}
+            name='ShoppingLists'
+            // component={ShoppingLists}
           >
             {/* for access to DB prop variables */}
-            {props => <ShoppingList db={db} {...props} />}
+            {props => <ShoppingLists db={db} {...props} />}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
-    </View>
+    // </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#bfd8ad',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#bfd8ad',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
